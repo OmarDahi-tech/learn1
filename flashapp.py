@@ -1,5 +1,4 @@
 from flet import *
-# from plyer import flash
 def view(page:Page):
     page.window.width = 390
     page.window.height = 740
