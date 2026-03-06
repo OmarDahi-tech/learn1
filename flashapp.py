@@ -1,0 +1,60 @@
+from flet import *
+# from plyer import flash
+def view(page:Page):
+    page.window.width = 390
+    page.window.height = 740
+    page.window.top = 1
+    page.window.left = 960
+    page.theme_mode = "light"
+
+    flash = Flashlight()
+    page.overlay.append(flash)
+
+    PH = PermissionHandler()
+    page.overlay.append(PH)
+
+    def open_setting():
+        PH.open_app_settings()
+
+    page.add(
+        AppBar(
+            title= Text("Flash app [OmD]"),
+            bgcolor= "pink",
+            actions=[
+                IconButton(icon=icons.SETTINGS, on_click=open_setting)
+            ]),
+        
+        Row(
+            [Text("\n\n Flash Light App",size=26)],alignment="center"
+        ),
+
+        Row([
+            Image(src="images.jfif")
+        ],alignment="center"),
+
+
+        Text("\n"),
+
+
+        Row([
+            ElevatedButton("ON", bgcolor= colors.PINK , color=colors.WHITE , icon= icons.PLAY_ARROW, on_click=lambda _: flash.turn_on),
+            ElevatedButton("OFF", bgcolor= colors.PINK , color=colors.WHITE, icon=icons.PLAY_DISABLED_SHARP, on_click=lambda _: flash.turn_off),
+
+
+        ],alignment="center")
+
+        )
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+app(target = view)
